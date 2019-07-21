@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageBg1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/r1"
+                android:scaleType="fitCenter"
+                android:tint="#64000000"/>
+
+            <ImageView android:id="@+id/imageBg2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/r2"
+                android:scaleType="fitCenter"
+                android:tint="#64000000"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="top|center_vertical|center_horizontal|center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="75dp">
+
+        <TextView android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GameX"
+            android:fontFamily="@font/poppins_medium"/>
+
+        <TextView
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/username1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Load awesome Game Wallpapers!"
+            android:fontFamily="@font/poppins_medium"/>
+
+        <TextView android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="bottom|center_vertical|center_horizontal|center" android:orientation="vertical" android:padding="10dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="40dp">
+        <Button
+            android:gravity="center"
+            android:id="@+id/enter"
+            android:background="@drawable/btn_corner"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Enter "
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:backgroundTint="@android:color/white"/>
+
+        <Button
+            android:textColor="@android:color/white"
+            android:id="@+id/follow"
+            android:background="@drawable/btn_corner6"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="more apps"
+            android:drawableStart="@drawable/ic_play_store"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

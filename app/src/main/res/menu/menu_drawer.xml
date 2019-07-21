@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+tools:showIn="navigation_view">
+
+
+    <group
+        android:id="@+id/grp1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_recent"
+            android:title="@string/drawer_recent" />
+        <item
+            android:id="@+id/nav_fav"
+            android:icon="@drawable/ic_menufavorite"
+            android:title="@string/drawer_favorite" />
+    </group>
+
+<group
+    android:id="@+id/grp2"
+    android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_upd"
+        android:icon="@drawable/ic_refresh"
+        android:title="@string/drawer_update" />
+
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/drawer_settings" />
+    <item
+        android:id="@+id/nav_rate"
+        android:icon="@drawable/ic_star"
+        android:title="@string/drawer_rate" />
+    <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/ic_share"
+        android:title="@string/drawer_share" />
+</group>
+
+
+
+</menu>

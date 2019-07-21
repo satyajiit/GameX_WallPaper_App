@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_header_height">
+
+
+        <ImageView android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:src="@mipmap/nav_icon"/>
+
+        <TextView android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_header_title"
+            android:fontFamily="@font/poppins_medium"/>
+
+        <TextView android:textSize="14sp"
+            android:id="@+id/verion_text"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_header_subtitle"
+            android:fontFamily="@font/poppins_medium"/>
+
+
+    </LinearLayout>
+
+<View
+    android:background="@android:color/darker_gray"
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"/>
+
+</LinearLayout>
+

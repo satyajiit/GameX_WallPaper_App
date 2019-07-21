@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">GameX</string>
+
+    <string name="drawer_favorite">Favorite</string>
+    <string name="drawer_share">Share with your friends</string>
+    <string name="drawer_rate">Rate the app</string>
+    <string name="drawer_settings">Settings</string>
+    <string name="drawer_update">Check for update</string>
+    <string name="drawer_recent">Home</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">GameX</string>
+    <string name="nav_header_subtitle">Version: V 1.0 </string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
