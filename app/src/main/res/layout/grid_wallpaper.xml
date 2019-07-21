@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/ripple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+  <RelativeLayout
+      android:orientation="horizontal"
+      android:id="@+id/linear"
+      android:layout_width="match_parent"
+      android:layout_height="400dp">
+
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginBottom="0dp"
+      android:layout_alignParentBottom="true">
+
+    <ImageView
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_thumbnail"
+        android:scaleType="centerCrop"
+        android:contentDescription="IMage"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="bottom|right|center_vertical|center_horizontal|center"
+        android:id="@+id/llView"
+        android:layout_width="65dp"
+        android:layout_height="25dp"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:id="@+id/tvView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100" android:layout_weight="1"
+            android:fontFamily="@font/poppins_medium"
+            android:textAlignment="center"/>
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:src="@drawable/ic_eye"/>
+
+            </LinearLayout>
+
+          <TextView
+             android:textSize="10sp"
+              android:textStyle="bold"
+              android:textColor="@color/black"
+              android:layout_gravity="end"
+              android:id="@+id/tv_ad"
+              android:background="@drawable/rounded_background"
+              android:paddingLeft="10dp"
+              android:paddingTop="3dp"
+              android:paddingRight="10dp"
+              android:paddingBottom="3dp"
+              android:visibility="gone"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_margin="10dp"
+              android:text="AD"
+              android:fontFamily="@font/poppins_medium"/>
+                    </FrameLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+    <TextView android:textSize="14sp"
+        android:textColor="@color/white"
+        android:id="@+id/txt_cat"
+        android:background="@color/black"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="5" android:text="test"
+        android:fontFamily="@font/poppins_medium"/>
+</LinearLayout>

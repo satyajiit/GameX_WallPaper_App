@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+
+    <LinearLayout android:orientation="vertical"
+        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="rece" />
-</LinearLayout>
+        android:layout_height="match_parent">
+
+        <LinearLayout android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/rootlayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:background="@android:color/white"
+                android:scrollbars="none"
+                android:clipToPadding="false"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"/>
+
+            <ProgressBar android:id="@+id/progressBar"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <include layout="@layout/no_internet"/>
+         </LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

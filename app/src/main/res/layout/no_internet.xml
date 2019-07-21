@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/no_internet"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <FrameLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:gravity="center"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout android:gravity="top"
+                android:layout_gravity="top"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin">
+
+                <FrameLayout android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_gravity="center"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
+                        android:src="@drawable/round_shadow"
+                        android:alpha="0.15"/>
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:layout_width="175dp"
+                        android:layout_height="175dp"
+                        android:src="@drawable/nointernet"
+                        android:scaleType="fitCenter"/>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No Connection"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                    <TextView android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:text="NO INTERNET"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                    <Button
+                        android:textColor="@android:color/white"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:id="@+id/refresh1"
+                        android:background="@drawable/btn_corner4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:text="REFRESH NOW"
+                        android:fontFamily="@font/poppins_medium"
+                        android:backgroundTint="#282727"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.core.widget.NestedScrollView>

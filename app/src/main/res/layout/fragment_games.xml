@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootlayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.GamesFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment_recent layout -->
-    <TextView
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="GAMES" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:scrollbars="none"
+                android:clipToPadding="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
