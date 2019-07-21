@@ -59,6 +59,7 @@ public class MainFragment extends Fragment {
 
 
 
+
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 

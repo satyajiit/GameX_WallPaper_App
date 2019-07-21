@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
- xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -13,6 +13,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            ads:cardCornerRadius="7dp"
+            ads:cardElevation="5dp"
             android:layout_margin="2dp">
 
             <LinearLayout
@@ -25,7 +27,13 @@
       android:orientation="horizontal"
       android:id="@+id/linear"
       android:layout_width="match_parent"
-      android:layout_height="400dp">
+      android:layout_height="300dp">
+
+      <ProgressBar android:id="@+id/progress_bar"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          style="?android:attr/progressBarStyleSmall"/>
 
   <FrameLayout
       android:layout_width="match_parent"
@@ -34,7 +42,7 @@
       android:layout_alignParentBottom="true">
 
     <ImageView
-        android:id="@+id/item"
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/ic_thumbnail"
@@ -53,10 +61,11 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:id="@+id/tvView"
+            android:id="@+id/count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100" android:layout_weight="1"
+            android:text="100"
+            android:layout_weight="1"
             android:fontFamily="@font/poppins_medium"
             android:textAlignment="center"/>
 
@@ -69,23 +78,8 @@
 
             </LinearLayout>
 
-          <TextView
-             android:textSize="10sp"
-              android:textStyle="bold"
-              android:textColor="@color/black"
-              android:layout_gravity="end"
-              android:id="@+id/tv_ad"
-              android:background="@drawable/rounded_background"
-              android:paddingLeft="10dp"
-              android:paddingTop="3dp"
-              android:paddingRight="10dp"
-              android:paddingBottom="3dp"
-              android:visibility="gone"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_margin="10dp"
-              android:text="AD"
-              android:fontFamily="@font/poppins_medium"/>
+
+
                     </FrameLayout>
                 </RelativeLayout>
             </LinearLayout>
@@ -93,9 +87,9 @@
     </com.balysv.materialripple.MaterialRippleLayout>
 
     <TextView android:textSize="14sp"
-        android:textColor="@color/white"
-        android:id="@+id/txt_cat"
-        android:background="@color/black"
+        android:textColor="@color/black"
+        android:id="@+id/name"
+        android:background="@color/white"
         android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
