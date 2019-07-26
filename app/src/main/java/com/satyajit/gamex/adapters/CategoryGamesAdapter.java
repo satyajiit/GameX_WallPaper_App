@@ -1,6 +1,7 @@
 package com.satyajit.gamex.adapters;
 
-
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,23 +12,27 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.satyajit.gamex.GetterSetter.Items;
 import com.satyajit.gamex.R;
+import com.satyajit.gamex.activities.WallpaperByCategoryActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class RecentsAdapter extends RecyclerView.Adapter<RecentsAdapter.MyViewHolder> {
+public class CategoryGamesAdapter extends RecyclerView.Adapter<CategoryGamesAdapter.MyViewHolder> {
 
     //Extending the Recycler View to use it as the required adapter
 
     private List<Items> namesList;
+    Context context;
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name,count;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView count;
         ImageView img;
         ProgressBar progressBar;
+
 
         //Declared all the views from single item xml
 
@@ -36,7 +41,7 @@ public class RecentsAdapter extends RecyclerView.Adapter<RecentsAdapter.MyViewHo
             super(view);
 
             //Init
-            name = view.findViewById(R.id.name);
+
             img = view.findViewById(R.id.image);
             count = view.findViewById(R.id.count);
             progressBar = view.findViewById(R.id.progress_bar);
@@ -45,22 +50,23 @@ public class RecentsAdapter extends RecyclerView.Adapter<RecentsAdapter.MyViewHo
     }
 
 
-    public RecentsAdapter(List<Items> namesList) {
+    public CategoryGamesAdapter(List<Items> namesList, Context context) {
         this.namesList = namesList;
+        this.context = context;
     }
 
 
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CategoryGamesAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_wallpaper, parent, false);
+                .inflate(R.layout.list_item_games_from_category, parent, false);
 
-        return new MyViewHolder(itemView);
+        return new CategoryGamesAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final CategoryGamesAdapter.MyViewHolder holder, int position) {
 
 
 
@@ -68,25 +74,15 @@ public class RecentsAdapter extends RecyclerView.Adapter<RecentsAdapter.MyViewHo
 
 
 
-        holder.name.setText(items.getName());
+
 
         float count = Float.parseFloat(items.getCount());
 
-        float temp;
-
-        if (count>1000){
-
-            temp = count/1000;
-
-            if (temp > 99) holder.count.setText(String.format(java.util.Locale.US,"%.0f", count/1000)+"K");
-
-            else     holder.count.setText(String.format(java.util.Locale.US,"%.1f", count/1000)+"K");
-
-        }
-
+        if (count>1000)
+            holder.count.setText(String.format(java.util.Locale.US,"%.1f", count/1000)+"K");
 
         else
-        holder.count.setText(items.getCount());
+            holder.count.setText(items.getCount());
 
 
         holder.img.setVisibility(View.GONE);
@@ -106,13 +102,14 @@ public class RecentsAdapter extends RecyclerView.Adapter<RecentsAdapter.MyViewHo
             public void onError(Exception e) {
 
                 Log.d("ss",e.getMessage());
-               // holder.shim.stopShimmer();
-               // holder.img.setVisibility(View.VISIBLE);
+                // holder.shim.stopShimmer();
+                // holder.img.setVisibility(View.VISIBLE);
                 //holder.shim.setVisibility(View.GONE);
-               // holder.name.setVisibility(View.VISIBLE);
+                // holder.name.setVisibility(View.VISIBLE);
             }
 
         });
+
 
 
 

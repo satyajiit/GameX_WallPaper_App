@@ -20,9 +20,25 @@
         <item name="titleTextColor">#000</item>
 
     </style>
-
+    <style name="MineCustomTabText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
     <style name="TabTh">
     <item name="android:fontFamily">@font/poppins_medium</item>
     </style>
+
+    <style name="MyToolbar">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+
+
 
 </resources>

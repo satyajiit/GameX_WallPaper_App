@@ -1,24 +1,24 @@
-package com.satyajit.gamex.fragments;
+package com.satyajit.gamex.activities;
 
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
+import androidx.appcompat.widget.Toolbar;
+
 import com.satyajit.gamex.GetterSetter.Items;
 import com.satyajit.gamex.R;
+import com.satyajit.gamex.adapters.CategoryGamesAdapter;
 import com.satyajit.gamex.adapters.RecentsAdapter;
+import com.satyajit.gamex.fragments.RecentFragment;
 import com.satyajit.gamex.utils.AutoFitGridLayoutManager;
 import com.satyajit.gamex.utils.HttpHandler;
 
@@ -31,65 +31,65 @@ import java.util.Collections;
 import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
 
-public class RecentFragment extends Fragment {
+public class WallpaperByCategoryActivity extends AppCompatActivity {
 
 
     RecyclerView recyclerView;
 
-     private List<Items> namesList = new ArrayList<>();
+    private List<Items> namesList = new ArrayList<>();
 
-    private RecentsAdapter mAdapter;
+    private CategoryGamesAdapter mAdapter;
     ProgressBar pBar;
     SwipeRefreshLayout mSwipeRefreshLayout;
-    boolean isShuffle = FALSE ;
+    String id,cat_name;
+    Toolbar toolbar;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_recent, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_wallpaper_by_category);
 
-        setHasOptionsMenu(true);
+        readFromFragment();
 
-        initUI(v);
+        initUI();
 
         setupRecylerView();
 
-        //loadToList();
-
         if (mAdapter.getItemCount()==0)
-        new LoadURL().execute("ss");
+            new LoadURL().execute("ss");
 
         Listeners();
 
-        return v;
-    }
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.recent_menu, menu);
-        super.onCreateOptionsMenu(menu,inflater);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+
+        setTitle(cat_name);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.shuffle:
-                //newGame();
-                Collections.shuffle(namesList);
-                mAdapter.notifyDataSetChanged();
-                isShuffle = TRUE ;
-                return true;
-            case R.id.Latest:
-                isShuffle = FALSE ;
-                new LoadURL().execute();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    public boolean onSupportNavigateUp() {
+        finish();
+        onBackPressed();
+        return true;
     }
 
+    void readFromFragment(){
+
+        Intent i = getIntent();
+
+        Bundle b = i.getExtras();
+
+        id = b != null ? b.getString("id", "0") : null;
+        cat_name = b != null ? b.getString("name", "0") : null;
+
+    }
 
     void Listeners(){
 
@@ -102,8 +102,8 @@ public class RecentFragment extends Fragment {
 
     void setupRecylerView(){
 
-        mAdapter = new RecentsAdapter(namesList);
-        AutoFitGridLayoutManager layoutManager = new AutoFitGridLayoutManager(getActivity(), 500);  //Per row 3 items ... 1000/3=333.33
+        mAdapter = new CategoryGamesAdapter(namesList,this);
+        AutoFitGridLayoutManager layoutManager = new AutoFitGridLayoutManager(this, 500);  //Per row 2 items ... 1000/500=2
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
@@ -112,11 +112,11 @@ public class RecentFragment extends Fragment {
 
     }
 
-    void initUI(View v){
+    void initUI(){
 
-        recyclerView = v.findViewById(R.id.recycler_view_recents);
-        pBar = v.findViewById(R.id.progressBar);
-        mSwipeRefreshLayout = v.findViewById(R.id.swipeRefreshLayout);
+        recyclerView = findViewById(R.id.recycler_view_category_selection);
+        pBar = findViewById(R.id.progressBar);
+        mSwipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
 
     }
 
@@ -131,7 +131,7 @@ public class RecentFragment extends Fragment {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall("http://adminpanelririo.com/Rgaming//api.php?latest=");
+            String jsonStr = sh.makeServiceCall("http://adminpanelririo.com/Rgaming//api.php?cat_id="+id);
 
             Log.e("SSS", "Response from url: " + jsonStr);
 
@@ -148,7 +148,7 @@ public class RecentFragment extends Fragment {
                     while (i < jSONArray.length()) {
                         jsonObj = jSONArray.getJSONObject(i);
 
-                        Items item = new Items(jsonObj.getString("category_name"),jsonObj.getString("image"),jsonObj.getString("view_count"));
+                        Items item = new Items(jsonObj.getString("cat_name"),jsonObj.getString("images"),jsonObj.getString("view_count"));
                         namesList.add(item);
 
                         i++;
@@ -157,7 +157,7 @@ public class RecentFragment extends Fragment {
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
 
- }
+                }
             } else {
                 Log.e(TAG, "Couldn't get json from server.");
 
@@ -173,7 +173,7 @@ public class RecentFragment extends Fragment {
 
             pBar.setVisibility(View.GONE);
 
-            if (isShuffle) Collections.shuffle(namesList);
+
 
             mAdapter.notifyDataSetChanged();
 
@@ -189,7 +189,7 @@ public class RecentFragment extends Fragment {
             super.onPreExecute();
             namesList.clear();
             if (!mSwipeRefreshLayout.isRefreshing())
-            pBar.setVisibility(View.VISIBLE);
+                pBar.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.INVISIBLE);
 
         }
@@ -199,6 +199,7 @@ public class RecentFragment extends Fragment {
 
         }
     }
+
 
 
 

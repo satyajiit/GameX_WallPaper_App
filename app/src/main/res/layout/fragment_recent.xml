@@ -24,11 +24,12 @@
                 android:clipToPadding="false"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_margin="4dp"
+                android:layout_margin="@dimen/item_offset"
                 android:layout_weight="1"/>
 
             <ProgressBar android:id="@+id/progressBar"
                 android:visibility="gone"
+                android:indeterminateTint="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"/>

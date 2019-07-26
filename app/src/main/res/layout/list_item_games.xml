@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:id="@+id/lyt_parent"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:mrl_rippleAlpha="0.2"
+        ads:mrl_rippleColor="@color/colorPrimary"
+        ads:mrl_rippleHover="true"
+        ads:mrl_rippleOverlay="true">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            ads:cardCornerRadius="0dp"
+            ads:cardElevation="0dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ProgressBar android:id="@+id/progress_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                        android:indeterminateTint="@android:color/black"
+                        style="?android:attr/progressBarStyleSmall"/>
+
+                    <ImageView android:id="@+id/category_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/category_image_height"
+                        android:scaleType="centerCrop"/>
+
+
+
+                </FrameLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/categorty_title_margin"
+                    android:paddingTop="15dp"
+                    android:paddingRight="@dimen/categorty_title_margin"
+                    android:paddingBottom="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/category_title"
+                        android:id="@+id/category_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mountain"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                    <TextView android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/category_sub_title"
+                        android:id="@+id/category_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="254 Photos"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </com.balysv.materialripple.MaterialRippleLayout>
+
+</RelativeLayout>

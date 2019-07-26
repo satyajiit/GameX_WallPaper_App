@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.PopularFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment_recent layout -->
-    <TextView
+    <LinearLayout android:orientation="vertical"
+        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="POPUt" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <LinearLayout android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/rootlayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_recents"
+                android:background="@android:color/white"
+                android:scrollbars="none"
+                android:clipToPadding="false"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/item_offset"
+                android:layout_weight="1"/>
+
+            <ProgressBar android:id="@+id/progressBar"
+                android:visibility="gone"
+                android:indeterminateTint="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <include layout="@layout/no_internet"/>
+    </LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -8,7 +8,12 @@
     <com.balysv.materialripple.MaterialRippleLayout
         android:id="@+id/ripple"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        ads:mrl_rippleAlpha="0.2"
+        ads:mrl_rippleColor="@color/colorPrimary"
+        ads:mrl_rippleHover="true"
+        ads:mrl_rippleOverlay="true"
+        >
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -32,6 +37,7 @@
       <ProgressBar android:id="@+id/progress_bar"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:indeterminateTint="@android:color/black"
           android:layout_centerInParent="true"
           style="?android:attr/progressBarStyleSmall"/>
 
