@@ -28,7 +28,7 @@
 ## Features & Note :
 
 * Explore Yourself 🔥
-* GPLv3 License ✌
+* MIT License ✌
 * Good UI 💖
 * PHP API. 🌀
 * Do ask me for any doubts/installation 🙂
