@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class CategoryGamesAdapter extends RecyclerView.Adapter<CategoryGamesAdapter.MyViewHolder> {
+public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
 
     //Extending the Recycler View to use it as the required adapter
 
@@ -28,12 +28,15 @@ public class CategoryGamesAdapter extends RecyclerView.Adapter<CategoryGamesAdap
     Context context;
 
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView count;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView name;
         ImageView img;
         ProgressBar progressBar;
-        MaterialRippleLayout clicker;
+        MaterialRippleLayout holder;
 
+
+
+        Context con;
 
         //Declared all the views from single item xml
 
@@ -42,33 +45,35 @@ public class CategoryGamesAdapter extends RecyclerView.Adapter<CategoryGamesAdap
             super(view);
 
             //Init
-
+            name = view.findViewById(R.id.name);
             img = view.findViewById(R.id.image);
-            count = view.findViewById(R.id.count);
             progressBar = view.findViewById(R.id.progress_bar);
-            clicker = view.findViewById(R.id.clicker);
+            holder = view.findViewById(R.id.clicker);
+
 
         }
     }
 
 
-    public CategoryGamesAdapter(List<Items> namesList, Context context) {
+    public FavAdapter(List<Items> namesList,Context context ) {
         this.namesList = namesList;
         this.context = context;
+
     }
 
 
 
     @Override
-    public CategoryGamesAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_games_from_category, parent, false);
+                .inflate(R.layout.fav_list_item, parent, false);
 
-        return new CategoryGamesAdapter.MyViewHolder(itemView);
+
+        return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(final CategoryGamesAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
 
 
 
@@ -76,19 +81,12 @@ public class CategoryGamesAdapter extends RecyclerView.Adapter<CategoryGamesAdap
 
 
 
+        holder.name.setText(items.getName());
 
 
-        float count = Float.parseFloat(items.getCount());
+        //holder.img.setVisibility(View.GONE);
 
-        if (count>1000)
-            holder.count.setText(String.format(java.util.Locale.US,"%.1f", count/1000)+"K");
-
-        else
-            holder.count.setText(items.getCount());
-
-
-        holder.img.setVisibility(View.GONE);
-
+        holder.progressBar.setVisibility(View.GONE);
 
 
         Picasso.get().load("http://adminpanelririo.com/Rgaming//upload/"+items.getImage()).into(holder.img,new com.squareup.picasso.Callback() {
@@ -113,16 +111,21 @@ public class CategoryGamesAdapter extends RecyclerView.Adapter<CategoryGamesAdap
         });
 
 
-        holder.clicker.setOnClickListener(view -> {
+
+
+
+        holder.holder.setOnClickListener(view -> {
             Intent intent = new Intent(context, SlideImageActivity.class);
+
             intent.putExtra("position",position);
+
             context.startActivity(intent);
         });
 
 
-
-
     }
+
+
 
     @Override
     public int getItemCount() {

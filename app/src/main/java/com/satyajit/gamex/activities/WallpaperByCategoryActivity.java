@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import androidx.appcompat.widget.Toolbar;
@@ -17,9 +16,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.satyajit.gamex.GetterSetter.Items;
 import com.satyajit.gamex.R;
 import com.satyajit.gamex.adapters.CategoryGamesAdapter;
-import com.satyajit.gamex.adapters.RecentsAdapter;
-import com.satyajit.gamex.fragments.RecentFragment;
 import com.satyajit.gamex.utils.AutoFitGridLayoutManager;
+import com.satyajit.gamex.utils.GameX;
 import com.satyajit.gamex.utils.HttpHandler;
 
 import org.json.JSONArray;
@@ -27,7 +25,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
@@ -180,6 +177,8 @@ public class WallpaperByCategoryActivity extends AppCompatActivity {
             mSwipeRefreshLayout.setRefreshing(false);
 
             recyclerView.setVisibility(View.VISIBLE);
+
+            ((GameX) getApplication()).setList(namesList);
 
 
         }

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:orientation="vertical"
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/relativeLayout"
+            android:layout_alignParentStart="true"/>
+
+        <FrameLayout
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout android:gravity="center_vertical"
+                android:layout_gravity="top"
+                android:orientation="horizontal"
+                android:id="@+id/llView"
+                android:background="@drawable/toolbar_gradient"
+                android:paddingTop="30dp"
+                android:layout_width="match_parent" android:layout_height="90dp">
+
+                <ImageButton
+                    android:theme="@style/colorControlHighlight"
+                    android:id="@+id/back"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:paddingLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="back"
+                    app:srcCompat="@drawable/ic_arrow_back"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <LinearLayout android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginEnd="16dp">
+
+                    <ImageView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="4dp"
+                        android:src="@drawable/ic_eye_outline"/>
+
+                    <TextView android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:id="@+id/count_top"
+                        android:paddingLeft="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" android:layout_weight="1"
+                        android:fontFamily="@font/poppins_medium"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_gradient_down"
+                    android:paddingTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp">
+
+                        <LinearLayout android:gravity="center"
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+                            <com.like.LikeButton
+                                android:theme="@style/colorControlHighlight"
+                                android:id="@+id/fab_fav"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:layout_width="@dimen/slide_button_icon"
+                                android:layout_height="@dimen/slide_button_icon"
+                                app:anim_scale_factor="2"
+                                app:circle_end_color="@color/colorPrimary"
+                                app:dots_primary_color="@color/colorPrimary"
+                                app:dots_secondary_color="@color/colorPrimary"
+                                app:icon_size="25dp" app:icon_type="heart"
+                                app:like_drawable="@drawable/ic_heart_circle"
+                                app:unlike_drawable="@drawable/ic_heart_circle_outline"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+                            <ImageButton
+                                android:onClick="share"
+                                android:theme="@style/colorControlHighlight"
+                                android:layout_gravity="center"
+                                android:id="@+id/fab_share2"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:layout_width="@dimen/slide_button_icon"
+                                android:layout_height="@dimen/slide_button_icon"
+                                app:srcCompat="@drawable/ic_share_outline"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageButton
+                                android:theme="@style/colorControlHighlight"
+                                android:layout_gravity="center"
+                                android:id="@+id/fab_save"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:layout_width="@dimen/slide_button_icon"
+                                android:layout_height="@dimen/slide_button_icon"
+                                android:onClick="download"
+                                app:srcCompat="@drawable/ic_progress_download"/>
+
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center"
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageButton
+                                android:theme="@style/colorControlHighlight"
+                                android:layout_gravity="center"
+                                android:id="@+id/fab_set_as_wallpaper"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:layout_width="@dimen/slide_button_icon"
+                                android:onClick="setWallpaper"
+                                android:layout_height="@dimen/slide_button_icon"
+                                app:srcCompat="@drawable/ic_paint_bucket"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
+
+</LinearLayout>

@@ -8,4 +8,10 @@
     <dimen name="categorty_title_margin">22dp</dimen>
     <dimen name="category_image_height">260dp</dimen>
     <dimen name="item_offset">0dp</dimen>
+    <dimen name="slide_button_icon">40dp</dimen>
+    <dimen name="setings_icon_margin_left">15dp</dimen>
+    <dimen name="setting_margin_right">12dp</dimen>
+    <dimen name="setting_subtitle_text">14sp</dimen>
+    <dimen name="setting_text_title">16sp</dimen>
+    <dimen name="settings_icon_margin_top_bottom">10dp</dimen>
 </resources>

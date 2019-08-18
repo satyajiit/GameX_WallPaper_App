@@ -4,8 +4,11 @@ package com.satyajit.gamex.fragments;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -43,11 +46,12 @@ public class GamesFragment extends Fragment {
     SwipeRefreshLayout mSwipeRefreshLayout;
 
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_games, container, false);
 
-        setHasOptionsMenu(true);
+        //setHasOptionsMenu(true);
 
         initUI(v);
         setupRecylerView();
@@ -60,11 +64,11 @@ public class GamesFragment extends Fragment {
         return v;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.games_menu, menu);
-        super.onCreateOptionsMenu(menu,inflater);
-    }
+  //  @Override
+  //  public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+     //   inflater.inflate(R.menu.games_menu, menu);
+     //   super.onCreateOptionsMenu(menu,inflater);
+  //  }
 
     void Listeners(){
 
@@ -75,12 +79,22 @@ public class GamesFragment extends Fragment {
 
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+    }
+
     void setupRecylerView(){
 
         mAdapter = new GamesAdapter(namesList,getActivity());
         AutoFitGridLayoutManager layoutManager = new AutoFitGridLayoutManager(getActivity(), 1000);  //Per row 3 items ... 1000/3=333.33
-        recyclerView.setLayoutManager(layoutManager);
+       recyclerView.setLayoutManager(layoutManager);
+       // recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemViewCacheSize(2);
         recyclerView.setAdapter(mAdapter);
 
 

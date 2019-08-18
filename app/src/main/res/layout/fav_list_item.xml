@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/listed"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -57,34 +58,7 @@
                             android:scaleType="centerCrop"
                             android:contentDescription="IMage"/>
 
-                        <LinearLayout
-                            android:gravity="center"
-                            android:layout_gravity="bottom|right|center_vertical|center_horizontal|center"
-                            android:id="@+id/llView"
-                            android:layout_width="65dp"
-                            android:layout_height="25dp"
-                            android:layout_margin="5dp">
 
-                            <TextView
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                android:textColor="@android:color/white"
-                                android:id="@+id/count"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="100"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/poppins_medium"
-                                android:textAlignment="center"/>
-
-                            <ImageView
-                                android:layout_gravity="center_vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="2dp"
-                                android:src="@drawable/ic_eye"/>
-
-                        </LinearLayout>
 
 
 
@@ -94,5 +68,13 @@
         </androidx.cardview.widget.CardView>
     </com.balysv.materialripple.MaterialRippleLayout>
 
-
+    <TextView android:textSize="14sp"
+        android:textColor="@color/black"
+        android:id="@+id/name"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="5" android:text="test"
+        android:fontFamily="@font/poppins_medium"/>
 </LinearLayout>

@@ -10,4 +10,9 @@
     <color name="category_sub_title">#2d2d2d</color>
     <color name="category_title">#020202</color>
     <color name="tabTextColor">#c7c7c7</color>
+    <color name="detailsToolbar">#97000000</color>
+    <color name="slider">#32000000</color>
+    <color name="background">#000000</color>
+    <color name="settings_sub_title">#616060</color>
+    <color name="settings_title">#000</color>
 </resources>

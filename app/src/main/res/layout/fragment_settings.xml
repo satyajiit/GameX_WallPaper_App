@@ -1,14 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MenuFragments.SettingsFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:ads="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="@android:color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+            <LinearLayout
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center" android:orientation="horizontal" android:paddingLeft="@dimen/setings_icon_margin_left" android:paddingTop="@dimen/settings_icon_margin_top_bottom" android:paddingRight="@dimen/setting_margin_right" android:paddingBottom="@dimen/settings_icon_margin_top_bottom" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/setting_text_title" android:textColor="@color/settings_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Storage Location" android:fontFamily="@font/poppins_medium"/>
+                    <TextView android:textSize="@dimen/setting_subtitle_text" android:textColor="@color/settings_sub_title" android:id="@+id/storage_location" android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="/storage/emulated/0/GameX" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffd2d2d2"
+                android:layout_width="match_parent" android:layout_height="0.05dp"/>
 
-</FrameLayout>
+            <LinearLayout android:gravity="center" android:orientation="horizontal"
+                android:id="@+id/llCache"
+                android:paddingLeft="@dimen/setings_icon_margin_left"
+                android:paddingTop="@dimen/settings_icon_margin_top_bottom"
+                android:paddingRight="@dimen/setting_margin_right"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:paddingBottom="@dimen/settings_icon_margin_top_bottom"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" android:layout_marginBottom="5dp">
+
+                <LinearLayout android:orientation="vertical"
+                    android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/setting_text_title"
+                        android:textColor="@color/settings_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Clear Cache" android:fontFamily="@font/poppins_medium"/>
+                    <TextView android:textSize="@dimen/setting_subtitle_text" android:textColor="@color/settings_sub_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Clear all saved cache" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffd2d2d2" android:layout_width="match_parent" android:layout_height="0.05dp"/>
+            <LinearLayout
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:orientation="horizontal" android:id="@+id/llGDPR" android:paddingLeft="@dimen/setings_icon_margin_left" android:paddingTop="@dimen/settings_icon_margin_top_bottom" android:paddingRight="@dimen/setting_margin_right" android:paddingBottom="@dimen/settings_icon_margin_top_bottom" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/setting_text_title" android:textColor="@color/settings_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="General Data Protection Regulation " android:fontFamily="@font/poppins_medium"/>
+                    <TextView android:textSize="@dimen/setting_subtitle_text" android:textColor="@color/settings_sub_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Data protection and privacy in EU" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffd2d2d2" android:layout_width="match_parent" android:layout_height="0.05dp"/>
+            <LinearLayout
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center" android:orientation="horizontal" android:id="@+id/llPrivacyPolicy" android:paddingLeft="@dimen/setings_icon_margin_left" android:paddingTop="@dimen/settings_icon_margin_top_bottom" android:paddingRight="@dimen/setting_margin_right" android:paddingBottom="@dimen/settings_icon_margin_top_bottom" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/setting_text_title" android:textColor="@color/settings_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Privacy Policy" android:fontFamily="@font/poppins_medium"/>
+                    <TextView android:textSize="@dimen/setting_subtitle_text" android:textColor="@color/settings_sub_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Read our privacy policy" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffd2d2d2" android:layout_width="match_parent" android:layout_height="0.05dp"/>
+            <LinearLayout
+
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center" android:orientation="horizontal" android:id="@+id/llDmca" android:paddingLeft="@dimen/setings_icon_margin_left" android:paddingTop="@dimen/settings_icon_margin_top_bottom" android:paddingRight="@dimen/setting_margin_right" android:paddingBottom="@dimen/settings_icon_margin_top_bottom" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/setting_text_title" android:textColor="@color/settings_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="DMCA" android:fontFamily="@font/poppins_medium"/>
+                    <TextView android:textSize="@dimen/setting_subtitle_text" android:textColor="@color/settings_sub_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Read The DMCA Policy" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffd2d2d2" android:layout_width="match_parent" android:layout_height="0.05dp"/>
+            <LinearLayout
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="horizontal" android:id="@+id/llRate"
+                android:paddingLeft="@dimen/setings_icon_margin_left" android:paddingTop="@dimen/settings_icon_margin_top_bottom" android:paddingRight="@dimen/setting_margin_right" android:paddingBottom="@dimen/settings_icon_margin_top_bottom" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/setting_text_title" android:textColor="@color/settings_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Rate this app" android:fontFamily="@font/poppins_medium"/>
+                    <TextView android:textSize="@dimen/setting_subtitle_text" android:textColor="@color/settings_sub_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your feedback matters to us " android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffd2d2d2" android:layout_width="match_parent" android:layout_height="0.05dp"/>
+            <LinearLayout
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center" android:orientation="horizontal" android:id="@+id/llShare" android:paddingLeft="@dimen/setings_icon_margin_left" android:paddingTop="@dimen/settings_icon_margin_top_bottom" android:paddingRight="@dimen/setting_margin_right" android:paddingBottom="@dimen/settings_icon_margin_top_bottom" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/setting_text_title" android:textColor="@color/settings_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Recommend" android:fontFamily="@font/poppins_medium"/>
+                    <TextView android:textSize="@dimen/setting_subtitle_text" android:textColor="@color/settings_sub_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Support us by sharing the application with your friends!" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffd2d2d2" android:layout_width="match_parent" android:layout_height="0.05dp"/>
+            <LinearLayout
+                android:id="@+id/reportBugs"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center" android:orientation="horizontal"
+                android:paddingLeft="@dimen/setings_icon_margin_left"
+                android:paddingTop="@dimen/settings_icon_margin_top_bottom"
+                android:paddingRight="@dimen/setting_margin_right"
+                android:paddingBottom="@dimen/settings_icon_margin_top_bottom"
+                android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical" android:id="@+id/llBugs" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/setting_text_title" android:textColor="@color/settings_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Report Bugs" android:fontFamily="@font/poppins_medium"/>
+                    <TextView android:textSize="@dimen/setting_subtitle_text" android:textColor="@color/settings_sub_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Report bugs or suggest new features" android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:background="#ffd2d2d2" android:layout_width="match_parent" android:layout_height="0.05dp"/>
+            <LinearLayout
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center" android:orientation="horizontal" android:paddingLeft="@dimen/setings_icon_margin_left" android:paddingTop="@dimen/settings_icon_margin_top_bottom" android:paddingRight="@dimen/setting_margin_right" android:paddingBottom="@dimen/settings_icon_margin_top_bottom" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/setting_text_title" android:textColor="@color/settings_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Version" android:fontFamily="@font/poppins_medium"/>
+                    <TextView android:textSize="@dimen/setting_subtitle_text"
+                        android:textColor="@color/settings_sub_title"
+                        android:id="@+id/version" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:text="2.3.1"
+                        android:fontFamily="@font/poppins_medium"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ import com.satyajit.gamex.fragments.PopularFragment;
 import com.satyajit.gamex.fragments.RecentFragment;
 
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements RecentFragment.OnChildFragmentInteractionListener {
 
     public MainFragment() {
         // Required empty public constructor
@@ -29,7 +30,7 @@ public class MainFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-
+    private OnFragmentInteractionListener mListener;
 
 
     @Override
@@ -40,7 +41,6 @@ public class MainFragment extends Fragment {
         viewPager =  v.findViewById(R.id.viewPager);
         tabLayout = v.findViewById(R.id.tabLayout);
 
-        Toast.makeText(getActivity(), "ssss", Toast.LENGTH_SHORT).show();
 
         setupAdapter();
 
@@ -53,17 +53,49 @@ public class MainFragment extends Fragment {
 
 
         adapter = new TabAdapter(getActivity().getSupportFragmentManager());
+
         adapter.addFragment(new RecentFragment(), "RECENT");
         adapter.addFragment(new GamesFragment(), "GAMES");
+
         adapter.addFragment(new PopularFragment(), "POPULAR");
 
 
 
 
+
         viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        //int limit = (adapter.getCount() > 1 ? adapter.getCount() - 1 : 1);
+        //viewPager.setOffscreenPageLimit(limit);
+        //tabLayout.setupWithViewPager(viewPager);
+
+
+
+        // this is a workaround
+        tabLayout.post(() -> {
+            //provide the viewPager to TabLayout.
+            tabLayout.setupWithViewPager(viewPager);
+        });
+
+        //to preload the adjacent tabs. This makes transition smooth.
+
+        viewPager.setOffscreenPageLimit(1);
+
+
 
     }
+
+
+    @Override
+    public void messageFromChildToParent(String myString) {
+        Log.i("TAG", myString);
+    }
+
+    public interface OnFragmentInteractionListener {
+        void messageFromParentFragmentToActivity(String myString);
+    }
+
+
+
 
     void listener(){
 

@@ -2,14 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/listed"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <com.balysv.materialripple.MaterialRippleLayout
-        android:id="@+id/ripple"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ads:mrl_rippleAlpha="0.2"
+        android:id="@+id/clicker"
+        android:clickable="true"
+        android:focusable="true"
         ads:mrl_rippleColor="@color/colorPrimary"
         ads:mrl_rippleHover="true"
         ads:mrl_rippleOverlay="true"

@@ -6,10 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowTranslucentStatus">true</item>
         <item name="android:itemBackground">@color/white</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
     </style>
 
 
@@ -39,6 +40,8 @@
     </style>
 
 
-
+    <style name="colorControlHighlight">
+        <item name="colorControlHighlight">#eeeeee</item>
+    </style>
 
 </resources>

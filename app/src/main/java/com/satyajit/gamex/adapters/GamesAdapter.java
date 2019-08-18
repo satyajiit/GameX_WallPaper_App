@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -16,6 +17,8 @@ import com.balysv.materialripple.MaterialRippleLayout;
 import com.satyajit.gamex.GetterSetter.Items;
 import com.satyajit.gamex.R;
 import com.satyajit.gamex.activities.WallpaperByCategoryActivity;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -35,6 +38,7 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder
         MaterialRippleLayout holder;
 
 
+
         Context con;
 
         //Declared all the views from single item xml
@@ -49,6 +53,7 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder
             count = view.findViewById(R.id.category_count);
             progressBar = view.findViewById(R.id.progress_bar);
             holder = view.findViewById(R.id.lyt_parent);
+
 
         }
     }
@@ -84,8 +89,9 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder
         holder.count.setText(items.getCount()+" Photos");
 
 
-        holder.img.setVisibility(View.GONE);
+        //holder.img.setVisibility(View.GONE);
 
+        holder.progressBar.setVisibility(View.GONE);
 
 
         Picasso.get().load("http://adminpanelririo.com/Rgaming//upload/category/"+items.getImage()).into(holder.img,new com.squareup.picasso.Callback() {
@@ -112,6 +118,18 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.MyViewHolder
 
 
 
+
+        holder.holder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, WallpaperByCategoryActivity.class);
+
+                intent.putExtra("id", items.getId());
+                intent.putExtra("name", items.getName());
+
+                context.startActivity(intent);
+            }
+        });
 
 
     }

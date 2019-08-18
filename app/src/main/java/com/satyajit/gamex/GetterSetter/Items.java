@@ -10,6 +10,11 @@ public class Items {
         this.count = count;
     }
 
+    public Items(String name, String image) {
+        this.name = name;
+        this.image = image;
+    }
+
     public Items(String name, String image, String count,String id) {
         this.name = name;
         this.image = image;

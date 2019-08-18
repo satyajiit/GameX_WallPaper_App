@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,7 @@ import com.satyajit.gamex.GetterSetter.Items;
 import com.satyajit.gamex.R;
 import com.satyajit.gamex.adapters.RecentsAdapter;
 import com.satyajit.gamex.utils.AutoFitGridLayoutManager;
+import com.satyajit.gamex.utils.GameX;
 import com.satyajit.gamex.utils.HttpHandler;
 
 import org.json.JSONArray;
@@ -37,6 +39,8 @@ import static java.lang.Boolean.TRUE;
 public class RecentFragment extends Fragment {
 
 
+    private OnChildFragmentToActivityInteractionListener mActivityListener;
+    private OnChildFragmentInteractionListener mParentListener;
     RecyclerView recyclerView;
 
      private List<Items> namesList = new ArrayList<>();
@@ -47,7 +51,7 @@ public class RecentFragment extends Fragment {
     boolean isShuffle = FALSE ;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@Nullable LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_recent, container, false);
 
         setHasOptionsMenu(true);
@@ -58,13 +62,59 @@ public class RecentFragment extends Fragment {
 
         //loadToList();
 
-        if (mAdapter.getItemCount()==0)
+        if (mAdapter.getItemCount()==0||namesList.size()<1)
         new LoadURL().execute("ss");
 
         Listeners();
 
+
+
         return v;
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+
+    public interface OnChildFragmentToActivityInteractionListener {
+        void messageFromChildFragmentToActivity(String myString);
+    }
+
+    public interface OnChildFragmentInteractionListener {
+        void messageFromChildToParent(String myString);
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        if (isVisibleToUser) {
+            if (namesList != null && getActivity() != null)
+
+                ((GameX) getActivity().getApplication()).setList(namesList);
+
+            if (recyclerView!=null){
+                new LoadURL().execute("");
+            }
+           // Log.d("sssdaw","sssss");
+
+        }
+
+       else{
+
+           if (namesList!=null&&namesList.size()>1) {
+               int size = namesList.size();
+               namesList.clear();
+               mAdapter.notifyItemRangeRemoved(0, size);
+           }
+
+        }
+
+    }
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.recent_menu, menu);
@@ -102,7 +152,7 @@ public class RecentFragment extends Fragment {
 
     void setupRecylerView(){
 
-        mAdapter = new RecentsAdapter(namesList);
+        mAdapter = new RecentsAdapter(namesList, getActivity());
         AutoFitGridLayoutManager layoutManager = new AutoFitGridLayoutManager(getActivity(), 500);  //Per row 3 items ... 1000/3=333.33
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -181,8 +231,11 @@ public class RecentFragment extends Fragment {
 
             recyclerView.setVisibility(View.VISIBLE);
 
+            ((GameX) getActivity().getApplication()).setList(namesList);
+
 
         }
+
 
         @Override
         protected void onPreExecute() {

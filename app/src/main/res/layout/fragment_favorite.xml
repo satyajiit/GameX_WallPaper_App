@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MenuFragments.FavoriteFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:scrollbars="none"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/item_offset"/>
+
+        <LinearLayout android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/lyt_no_favorite"
+            android:paddingBottom="100dp"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+            <ImageView android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/ic_nofavorite"/>
+
+            <TextView android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorbar"
+                android:id="@+id/no_item_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="No favourite"
+                android:fontFamily="@font/poppins_medium"/>
+
+        </LinearLayout>
+    </LinearLayout>
+   </RelativeLayout>

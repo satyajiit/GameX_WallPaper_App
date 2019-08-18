@@ -21,6 +21,7 @@ import com.satyajit.gamex.GetterSetter.Items;
 import com.satyajit.gamex.R;
 import com.satyajit.gamex.adapters.RecentsAdapter;
 import com.satyajit.gamex.utils.AutoFitGridLayoutManager;
+import com.satyajit.gamex.utils.GameX;
 import com.satyajit.gamex.utils.HttpHandler;
 
 import org.json.JSONArray;
@@ -59,7 +60,7 @@ public class PopularFragment extends Fragment {
 
         //loadToList();
 
-        if (mAdapter.getItemCount()==0)
+        if (mAdapter.getItemCount()==0||namesList.size()<1)
             new LoadURL().execute("ss");
 
         Listeners();
@@ -83,6 +84,36 @@ public class PopularFragment extends Fragment {
         mSwipeRefreshLayout = v.findViewById(R.id.swipeRefreshLayout);
 
     }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        if (isVisibleToUser) {
+            if (namesList != null && getActivity() != null)
+
+                ((GameX) getActivity().getApplication()).setList(namesList);
+
+            if (recyclerView!=null){
+                new LoadURL().execute("");
+            }
+            // Log.d("sssdaw","sssss");
+
+        }
+
+        else{
+
+            if (namesList!=null&&namesList.size()>1) {
+                int size = namesList.size();
+                namesList.clear();
+                mAdapter.notifyItemRangeRemoved(0, size);
+            }
+
+        }
+
+    }
+
+
     void Listeners(){
 
         mSwipeRefreshLayout.setOnRefreshListener(() -> {
@@ -94,7 +125,7 @@ public class PopularFragment extends Fragment {
 
     void setupRecylerView(){
 
-        mAdapter = new RecentsAdapter(namesList);
+        mAdapter = new RecentsAdapter(namesList, getActivity());
         AutoFitGridLayoutManager layoutManager = new AutoFitGridLayoutManager(getActivity(), 500);  //Per row 3 items ... 1000/3=333.33
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -181,6 +212,9 @@ public class PopularFragment extends Fragment {
             mSwipeRefreshLayout.setRefreshing(false);
 
             recyclerView.setVisibility(View.VISIBLE);
+
+            if (getActivity()!=null)
+            ((GameX) getActivity().getApplication()).setList(namesList);
 
 
         }

@@ -7,29 +7,25 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Activity;
-import android.content.res.Configuration;
-import android.graphics.Color;
-import android.os.Build;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
 import com.satyajit.gamex.BuildConfig;
 import com.satyajit.gamex.MenuFragments.FavoriteFragment;
 import com.satyajit.gamex.MenuFragments.MainFragment;
 import com.satyajit.gamex.MenuFragments.SettingsFragment;
 import com.satyajit.gamex.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainFragment.OnFragmentInteractionListener{
 
     DrawerLayout mDrawer;
     Toolbar toolbar;
@@ -38,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         toolbar = findViewById(R.id.toolbar);
@@ -50,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawer = findViewById(R.id.drawer_layout);
 
 
-        NavigationView nvDrawer =findViewById(R.id.nav_view);
+        NavigationView nvDrawer = findViewById(R.id.nav_view);
         // Setup drawer view
         setupDrawerContent(nvDrawer);
 
@@ -61,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         // Tie DrawerLayout events to the ActionBarToggle
         mDrawer.addDrawerListener(drawerToggle);
 
-    startFragment(MainFragment.class);
+         startFragment(MainFragment.class);
 
         Menu menu = nvDrawer.getMenu();
         MenuItem menuItem = menu.findItem(R.id.nav_home);
@@ -81,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // The action bar home/up action should open or close the drawer.
@@ -95,12 +93,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        selectDrawerItem(menuItem);
-                        return true;
-                    }
+                menuItem -> {
+                    selectDrawerItem(menuItem);
+                    return true;
                 });
     }
 
@@ -118,12 +113,8 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle.syncState();
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggles
-        drawerToggle.onConfigurationChanged(newConfig);
-    }
+
+
 
 
     public void selectDrawerItem(MenuItem menuItem) {
@@ -140,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 startFragment(fragmentClass);
                 break;
             case R.id.nav_upd:
-                //fragmentClass = ThirdFragment.class;
+                openLink("https://play.google.com/store/apps/details?id=com.satyajit.gamex");
 
                 break;
             case R.id.nav_settings:
@@ -148,19 +139,26 @@ public class MainActivity extends AppCompatActivity {
                 startFragment(fragmentClass);
                 break;
             case R.id.nav_rate:
-                //fragmentClass = ThirdFragment.class;
+                openLink("https://play.google.com/store/apps/details?id=com.satyajit.gamex");
                 break;
             case R.id.nav_share:
-               // fragmentClass = ThirdFragment.class;
+               shareApp();
                 break;
         }
 
 
-
+    if (menuItem.getItemId()!= R.id.nav_share && menuItem.getItemId()!= R.id.nav_rate && menuItem.getItemId()!= R.id.nav_upd ) {
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
         // Set action bar title
         setTitle(menuItem.getTitle());
+
+    }
+
+    else {
+
+
+    }
         // Close the navigation drawer
         mDrawer.closeDrawers();
     }
@@ -177,7 +175,44 @@ public class MainActivity extends AppCompatActivity {
 
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+        //fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+
+
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.flContent, fragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
 
     }
+
+
+    @Override
+    public void messageFromParentFragmentToActivity(String myString) {
+        Log.i("TAG", myString);
+    }
+
+
+    private void shareApp(){
+
+        String shareBody = "Get Exclusive Game Wallpapers for Your Device , Download the app now https://play.google.com/store/apps/details?id=com.satyajit.gamex";
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "GameX");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share using : "));
+
+
+    }
+
+
+    void openLink(String url){
+
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(browserIntent);
+
+    }
+
+
 }

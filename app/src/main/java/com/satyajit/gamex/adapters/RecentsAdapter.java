@@ -1,23 +1,31 @@
 package com.satyajit.gamex.adapters;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.balysv.materialripple.MaterialRippleLayout;
 import com.satyajit.gamex.GetterSetter.Items;
 import com.satyajit.gamex.R;
+import com.satyajit.gamex.activities.SlideImageActivity;
+import com.satyajit.gamex.activities.WallpaperByCategoryActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class RecentsAdapter extends RecyclerView.Adapter<RecentsAdapter.MyViewHolder> {
+    private final Context context;
 
     //Extending the Recycler View to use it as the required adapter
 
@@ -28,6 +36,8 @@ public class RecentsAdapter extends RecyclerView.Adapter<RecentsAdapter.MyViewHo
         public TextView name,count;
         ImageView img;
         ProgressBar progressBar;
+        MaterialRippleLayout clicker;
+        LinearLayout container;
 
         //Declared all the views from single item xml
 
@@ -40,13 +50,16 @@ public class RecentsAdapter extends RecyclerView.Adapter<RecentsAdapter.MyViewHo
             img = view.findViewById(R.id.image);
             count = view.findViewById(R.id.count);
             progressBar = view.findViewById(R.id.progress_bar);
+            clicker = view.findViewById(R.id.clicker);
+            container = view.findViewById(R.id.listed);
 
         }
     }
 
 
-    public RecentsAdapter(List<Items> namesList) {
+    public RecentsAdapter(List<Items> namesList, Context context) {
         this.namesList = namesList;
+        this.context = context;
     }
 
 
@@ -105,7 +118,10 @@ public class RecentsAdapter extends RecyclerView.Adapter<RecentsAdapter.MyViewHo
             @Override
             public void onError(Exception e) {
 
-                Log.d("ss",e.getMessage());
+                Log.d("ss",items.getImage());
+                namesList.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position,namesList.size());
                // holder.shim.stopShimmer();
                // holder.img.setVisibility(View.VISIBLE);
                 //holder.shim.setVisibility(View.GONE);
@@ -116,9 +132,19 @@ public class RecentsAdapter extends RecyclerView.Adapter<RecentsAdapter.MyViewHo
 
 
 
+    holder.clicker.setOnClickListener(view -> {
+        Intent intent = new Intent(context, SlideImageActivity.class);
+        intent.putExtra("position",position);
+        context.startActivity(intent);
+    });
 
 
+    }
 
+    @Override
+    public void onViewDetachedFromWindow(@NonNull MyViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        Log.d("SSSS","HEYYY");
     }
 
     @Override
