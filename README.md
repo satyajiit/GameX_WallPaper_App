@@ -17,7 +17,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-oxygen.svg)](#)
 [![forthebadge](https://forthebadge.com/images/badges/ages-12.svg)](#)
 
-* URL Shortening App for Android. Shorten URLs on the Go!
+* Games Wallpaper App for Android. Download Material Games Wallpapers free!
 
 
 <img src="/Screen/2.png" height="583" width="350" />&nbsp;
