@@ -24,7 +24,6 @@
 <img src="/Screen/3.jpg" height="583" width="350" />&nbsp;
 <img src="/Screen/4.jpg" height="583" width="350" />&nbsp;
 <img src="/Screen/5.jpg" height="583" width="350"/>&nbsp;
-<img src="/Screen/6.jpg" height="583" width="350" />&nbsp;
 
 ## Features & Note :
 
