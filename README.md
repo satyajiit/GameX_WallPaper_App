@@ -20,14 +20,14 @@
 * Games Wallpaper App for Android. Download Material Games Wallpapers free!
 
 
-<img src="/Screen/2.png" height="583" width="350" />&nbsp;
-<img src="/Screen/3.png" height="583" width="350" />&nbsp;
-<img src="/Screen/4.png" height="583" width="350" />&nbsp;
-<img src="/Screen/5.png" height="583" width="350"/>&nbsp;
-<img src="/Screen/6.png" height="583" width="350" />&nbsp;
-<img src="/Screen/7.png" height="583" width="350" />&nbsp;
-<img src="/Screen/8.png" height="583" width="350" />&nbsp;
-<img src="/Screen/9.png" height="583" width="350" />&nbsp;
+<img src="/Screen/2.jpg" height="583" width="350" />&nbsp;
+<img src="/Screen/3.jpg" height="583" width="350" />&nbsp;
+<img src="/Screen/4.jpg" height="583" width="350" />&nbsp;
+<img src="/Screen/5.jpg" height="583" width="350"/>&nbsp;
+<img src="/Screen/6.jpg" height="583" width="350" />&nbsp;
+<img src="/Screen/7.jpg" height="583" width="350" />&nbsp;
+<img src="/Screen/8.jpg" height="583" width="350" />&nbsp;
+<img src="/Screen/9.jpg" height="583" width="350" />&nbsp;
 
 ## Features & Note :
 
