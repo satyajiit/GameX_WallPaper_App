@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/satyajiit/GameX_WallPaper_App.svg?branch=master)](https://travis-ci.com/satyajiit/GameX_WallPaper_App)
 # GameX - THE WALLPAPPER APP
 [![playstore](/Screen/playstore.png)](https://play.google.com/store/apps/details?id=com.satyajit.gamex)
 
