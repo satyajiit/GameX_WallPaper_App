@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.com/satyajiit/GameX_WallPaper_App.svg?branch=master)](https://travis-ci.com/satyajiit/GameX_WallPaper_App)
 # GameX - THE WALLPAPPER APP
 [![playstore](/Screen/playstore.png)](https://play.google.com/store/apps/details?id=com.satyajit.gamex)
 
@@ -17,6 +16,11 @@
 [![forthebadge](https://forthebadge.com/images/badges/winter-is-coming.svg)](#)
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-oxygen.svg)](#)
 [![forthebadge](https://forthebadge.com/images/badges/ages-12.svg)](#)
+
+
+## TravisCI
+
+[![Build Status](https://travis-ci.com/satyajiit/GameX_WallPaper_App.svg?branch=master)](https://travis-ci.com/satyajiit/GameX_WallPaper_App)
 
 * Games Wallpaper App for Android. Download Material Games Wallpapers free!
 
